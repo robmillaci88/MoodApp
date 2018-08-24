@@ -432,9 +432,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         sharedEditor.putString("totalmoodHistory", totalMoodHist).commit();
     }
 
-    public static void clear() { //method used to reset the mood and the notes which is called at midnight to prepare the app for the next day
+    public static void clear() { //method used to reset notes which is called at midnight to prepare the app for the next day
         sNote = "";
-        sCurrentImage = 3;
     }
 
     static int getsCurrentImage() { //getter for the static class member sCurrentImage
