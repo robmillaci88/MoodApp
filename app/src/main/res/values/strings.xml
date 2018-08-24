@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Mood Tracker</string>
+    <string name="moodHistoryText">You\'re mood on %1$s</string>
+    <string name="no_note_save">No note saved</string>
+    <string name="note_saved">Note saved! Add a note again to change it</string>
+    <string name="graph_title">Mood history for the past 4 weeks</string>
+    <string name="graph_v_axis">Mood Value</string>
+    <string name="graph_h_axis">Date</string>
+    <string name="no_history">You dont have any history yet. Check back tomorrow</string>
+</resources>
