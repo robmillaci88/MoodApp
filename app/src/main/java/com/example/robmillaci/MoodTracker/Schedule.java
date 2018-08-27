@@ -32,9 +32,9 @@ public class Schedule extends BroadcastReceiver {
 
         // Create a calendar object that is 0 hours 0 minutes and 0 seconds of the next day which allows us to get the time in milliseconds until midnight
         Calendar c = Calendar.getInstance();
-        c.add(Calendar.DATE, 0);
-        c.set(Calendar.HOUR_OF_DAY,13);
-        c.set(Calendar.MINUTE, 54);
+        c.add(Calendar.DATE, 1);
+        c.set(Calendar.HOUR_OF_DAY,0);
+        c.set(Calendar.MINUTE, 0);
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
         long scheduleTime = c.getTimeInMillis();
