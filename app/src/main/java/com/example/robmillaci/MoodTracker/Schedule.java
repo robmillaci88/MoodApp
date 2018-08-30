@@ -47,7 +47,7 @@ public class Schedule extends BroadcastReceiver {
          alarmManager = (AlarmManager) mcontext.getSystemService(Context.ALARM_SERVICE);
 
         // Set the alarm for the specified timeUntilMidnight passing a pending intent with the Schedule.class intent (reciever)
-        // Set the reoccurance of the alarm to be 24 hours 1000*60*60*24
+        // Set the reocurance of the alarm to be 24 hours 1000*60*60*24
 
         long alarmRecurranceTime = 1000*60*60*24;
 
