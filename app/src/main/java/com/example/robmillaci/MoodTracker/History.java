@@ -14,7 +14,7 @@ import android.view.MenuItem;
  * It defines a custom recycler view adaptor (class: RecyclerViewAdaptor) and a menu containing a menu item
  * 'home' and a menu item 'history graph'
  */
-    class History extends AppCompatActivity {
+    public class History extends AppCompatActivity {
     RecylerViewAdaptor mAdaptor;//the adaptor for the history list view
     RecyclerView historyView;
     @Override

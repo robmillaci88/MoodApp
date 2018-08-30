@@ -18,7 +18,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.robmillaci.MoodTracker.com.example.robmillaci.MoodTracker.MainActivity" />
+                android:value="com.example.robmillaci.MoodTracker.MainActivity" />
         </activity>
 
         <receiver

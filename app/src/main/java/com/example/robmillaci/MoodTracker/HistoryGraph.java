@@ -3,6 +3,7 @@ package com.example.robmillaci.MoodTracker;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * This activity handles the display of the past 28 days of mood history data
@@ -41,6 +43,7 @@ class HistoryGraph extends AppCompatActivity {
         calculateMoodPercentage(mMoodsList); //calculates the total mood values to use as a data set for the pie chart
         this.pieChart = findViewById(R.id.piechart_1);
         setPieChart(veryBadMoodPercent, badMoodPercent, decentMoodPercent, goodMoodPercent, veryGoodMoodPercent); //sets the mood values as a dataset in the pie chart
+
     }
 
     //loop through the entries in sTotalMoodHistoryArrayL from the Mood class and define the number of different moods found over the last 28 days
@@ -85,24 +88,10 @@ class HistoryGraph extends AppCompatActivity {
         pieChart.setHoleColor(Color.WHITE);
 
         //sets an animation when drawing the graph
-         pieChart.animateY(2000, Easing.EasingOption.EaseInOutCubic);
+        pieChart.animateY(2000, Easing.EasingOption.EaseInOutCubic);
 
         // disable the pie chart description label
         pieChart.getDescription().setEnabled(false);
-
-        //create an array list to hold the Piechart data set
-        ArrayList<PieEntry> yValues = new ArrayList<>();
-        if (mood1 != 0) yValues.add(new PieEntry(mood1, "Very bad mood"));
-        if (mood2 != 0) yValues.add(new PieEntry(mood2, "Bad mood"));
-        if (mood3 != 0) yValues.add(new PieEntry(mood3, "Decent mood"));
-        if (mood4 != 0) yValues.add(new PieEntry(mood4, "Good mood"));
-        if (mood5 != 0) yValues.add(new PieEntry(mood5, "Very good mood"));
-
-        //create the data set from the pie entry array defined above
-        PieDataSet dataSet = new PieDataSet(yValues, "");
-        dataSet.setSliceSpace(10f);
-        dataSet.setSelectionShift(5f);
-
 
         //prepare the colours for assignment to the graph segments
         int red = getResources().getColor(R.color.pastelRed);
@@ -129,27 +118,84 @@ class HistoryGraph extends AppCompatActivity {
         }
 
         //5 local variables so we can assign the values for the colors in the hashSet iteration
+        //initialized to 10,11,12,13,14 because these numbers will never exist in the mood list but they need to exist in the sortedArray so
+        //the arraylist index does not throw an exception. Also needed so the correct colors are set, essentially 10,11,12,13,14 will be ignored
+        //and once the unique mood exists, the initialized value will be overwritten.
         int color1 = 0;
-        int color2 = 0;
-        int color3 = 0;
-        int color4 = 0;
-        int color5 = 0;
+        int color2 = 1;
+        int color3 = 2;
+        int color4 = 3;
+        int color5 = 4;
 
         //create an iterator to iterate over the uniqueMoods hash set assigning the colors to the values
         try {
             Iterator it = uniqueMoods.iterator();
-            color1 = (int)it.next();
-            color2 = (int)it.next();
-            color3 = (int)it.next();
-            color4 = (int)it.next();
-            color5 = (int)it.next();
+            color1 = (int) it.next();
+            color2 = (int) it.next();
+            color3 = (int) it.next();
+            color4 = (int) it.next();
+            color5 = (int) it.next();
+
         } catch (Exception e) {
             //expected exception until 5 unique moods exist
         }
 
-        //set the pie chart colors based on the result of iterating through the unique moods hashset
-        dataSet.setColors(colorsArray.get(color1), colorsArray.get(color2), colorsArray.get(color3), colorsArray.get(color4), colorsArray.get(color5));
+        TreeSet<Integer> sortedColorSet = new TreeSet<>();
+        sortedColorSet.add(color1);
+        sortedColorSet.add(color2);
+        sortedColorSet.add(color3);
+        sortedColorSet.add(color4);
+        sortedColorSet.add(color5);
 
+        //convert the sortedColor tree set into an arraylist so we can easily .get() values required without needing to iterate.
+        ArrayList<Integer> sortedColorArray = new ArrayList<>(sortedColorSet);
+
+        //create an array list to hold the Piechart data set
+        ArrayList<PieEntry> yValues = new ArrayList<>();
+        if (mood1 != 0) yValues.add(new PieEntry(mood1, "Very bad mood"));
+        if (mood2 != 0) yValues.add(new PieEntry(mood2, "Bad mood"));
+        if (mood3 != 0) yValues.add(new PieEntry(mood3, "Decent mood"));
+        if (mood4 != 0) yValues.add(new PieEntry(mood4, "Good mood"));
+        if (mood5 != 0) yValues.add(new PieEntry(mood5, "Very good mood"));
+        //create the data set from the pie entry array defined above
+        PieDataSet dataSet = new PieDataSet(yValues, "");
+        dataSet.setSliceSpace(10f);
+        dataSet.setSelectionShift(5f);
+
+
+        //set the pie chart colors based on the result of iterating through sorted unique moods tree set
+
+        switch (sortedColorArray.size()) {
+            case 1:
+                dataSet.setColors(colorsArray.get(sortedColorArray.get(0)));
+                break;
+
+            case 2:
+                dataSet.setColors(colorsArray.get(sortedColorArray.get(0)),
+                colorsArray.get(sortedColorArray.get(1)));
+                break;
+
+            case 3:
+                dataSet.setColors(colorsArray.get(sortedColorArray.get(0)),
+                colorsArray.get(sortedColorArray.get(1)),
+                colorsArray.get(sortedColorArray.get(2)));
+                break;
+
+            case 4:
+                dataSet.setColors(colorsArray.get(sortedColorArray.get(0)),
+                colorsArray.get(sortedColorArray.get(1)),
+                colorsArray.get(sortedColorArray.get(2)),
+                colorsArray.get(sortedColorArray.get(3)));
+                break;
+
+            case 5:
+                dataSet.setColors(colorsArray.get(sortedColorArray.get(0)),
+                colorsArray.get(sortedColorArray.get(1)),
+                colorsArray.get(sortedColorArray.get(2)),
+                colorsArray.get(sortedColorArray.get(3)),
+                colorsArray.get(sortedColorArray.get(4)));
+                break;
+        }
 
         PieData pieData = new PieData(dataSet); //create a new instance of PieData passing the data set
 
