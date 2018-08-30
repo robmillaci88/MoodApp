@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mnuhome"
+        android:title="Home" />
+    <item
+        android:id="@+id/mnuuk"
+        android:title="UK" />
+    <item
+        android:id="@+id/mnuworld"
+        android:title="World" />
+    <item
+        android:id="@+id/mnuus"
+        android:title="US" />
+    <item
+        android:id="@+id/mnubusiness"
+        android:title="Business" />
+    <item
+        android:id="@+id/mnupolitics"
+        android:title="Politics" />
+    <item
+        android:id="@+id/mnutech"
+        android:title="Technology" />
+    <item
+        android:id="@+id/mnuentertainment"
+        android:title="Entertainment" />
+    <item
+        android:id="@+id/mnustrangeNews"
+        android:title="Strange News" />
+</menu>
