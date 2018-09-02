@@ -3,14 +3,11 @@ package com.example.robmillaci.MoodTracker;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -21,7 +18,7 @@ import java.util.TreeSet;
  * This activity handles the display of the past 28 days of mood history data
  * It uses a custom API 'com.github.PhilJay:MPAndroidChart:v3.0.3' to generate a pie chart
  */
-class HistoryGraph extends AppCompatActivity {
+public class HistoryGraph extends AppCompatActivity {
     private int veryBadMoodPercent = 0; //holds the total amount of very bad moods for the past 28 days
     private int badMoodPercent = 0;     //holds the total amount of bad moods for the past 28 days
     private int decentMoodPercent = 0;  //holds the total amount of decent moods for the past 28 days
@@ -210,9 +207,5 @@ class HistoryGraph extends AppCompatActivity {
 
 
         //PieChart Ends Here
-    }
-
-    public PieChart getPieChart() {
-        return pieChart;
     }
 }
