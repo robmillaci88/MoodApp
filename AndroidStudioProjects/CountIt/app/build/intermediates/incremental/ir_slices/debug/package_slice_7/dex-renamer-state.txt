@@ -1,0 +1,4 @@
+#Tue Sep 25 18:03:07 BST 2018
+base.0=C\:\\Users\\Rob\\Desktop\\CountIt\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\24
+path.0=classes.dex
+renamed.0=classes.dex
