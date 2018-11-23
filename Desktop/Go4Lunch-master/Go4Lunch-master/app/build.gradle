@@ -1,0 +1,75 @@
+//noinspection GradleCompatible
+//noinspection GradleCompatible
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+
+        applicationId "com.example.robmillaci.go4lunch"
+        minSdkVersion 19
+        //noinspection OldTargetApi
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v4:27.1.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.google.firebase:firebase-core:16.0.5'
+    implementation 'com.facebook.android:facebook-android-sdk:4.36.0'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation 'com.shobhitpuri.custombuttons:google-signin:1.0.0'
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.google.android.gms:play-services-places:16.0.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation "com.google.android.gms:play-services-location:16.0.0"
+    implementation 'com.google.firebase:firebase-core:16.0.5'
+    implementation 'com.google.firebase:firebase-database:16.0.5'
+    implementation 'com.google.firebase:firebase-firestore:17.1.3'
+    implementation('com.google.api-client:google-api-client-android:1.20.0') {
+        exclude module: 'guava-jdk5'
+    }
+    implementation "com.google.android.gms:play-services-gcm:16.0.0"
+    implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //Retrofit/Gson - objects to array list for storage and json parsing
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    //retrofit - A type-safe HTTP client for Android and Java
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+    //html parser
+    implementation 'org.jsoup:jsoup:1.11.3'
+
+
+}
+apply plugin: 'com.google.gms.google-services'
